@@ -1,0 +1,72 @@
+extends ../adminlte/layout
+
+block footer
+    script(src='/js/modules/users/form.js')
+
+block content
+    .col-md-12
+        .box.box-info
+            .box-header.with-border
+                h3.box-title #{title}
+            // /.box-header
+            // form start
+            form.form-horizontal
+                .box-body
+                    #alertbox.alert.alert-warning
+                        a#closeAlert.close.btn.btn-sm(href='javascript:;')
+                            i.fa.fa-times
+                        text#message
+                    .row
+                        if !isAddForm
+                            input(type='hidden', name='ids', value=ids)
+                        
+                        .col-md-12
+                    
+                            .form-group
+                                label.col-sm-2.control-label(for='username') Username
+                                .col-sm-8
+                                    input#username.form-control(type='text', placeholder='username', autocomplete='off')
+                            .form-group
+                                label.col-sm-2.control-label(for='password') Password
+                                .col-sm-8
+                                    input#password.form-control(type='password', placeholder='Password')
+                            .form-group
+                                label.col-sm-2.control-label(for='confpassword') Confirm Password
+                                .col-sm-8
+                                    input#confpassword.form-control(type='password', placeholder='Confirm Password')
+                            .form-group
+                                label.col-sm-2.control-label(for='firstname') First Name
+                                .col-sm-8
+                                    input#firstname.form-control(type='text', placeholder='Firstname' , autocomplete='off')
+                            .form-group
+                                label.col-sm-2.control-label(for='lastname') Last Name
+                                .col-sm-8
+                                    input#lastname.form-control(type='text', placeholder='Lastname', autocomplete='off')
+                            .form-group
+                                label.col-sm-2.control-label(for='other_role') Other Role
+                                .col-sm-8
+                                    input#other_role.form-control(type='text', placeholder='Eg: atm_district=indonesia Barat', autocomplete='off')
+                                    span.help-block format : [field]=[value][if more than 2 field "," eg= atm_id=12345, atm_district=foo]
+                            .form-group
+                                label.col-sm-2.control-label(for='user_group') User Group
+                                .col-sm-8
+                                    select#user_group.form-control.select2
+                                        option(value="1") Administrator
+                                        option(value="2") CCC / Dispatcher
+                                        option(value="3") Logistic
+                                        option(value="4") FSM / SPV
+                                        option(value="5") CSM
+                                        option(value="7") Partner
+                            .form-group
+                                .col-sm-2
+                                .col-sm-10
+                                    if isAddForm
+                                        a.btn.btn-primary(href='javascript:save();') Simpan
+                                    else
+                                        a.btn.btn-primary(href='javascript:update();') Update
+                                    | 
+                                    a.btn.btn-warning(href='/users') Cancel
+                // /.box-body
+                .box-footer
+
+                   

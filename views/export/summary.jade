@@ -1,0 +1,93 @@
+extends ../adminlte/layout
+
+block header
+    link(rel='stylesheet', href='/plugins/datatables/datatables.min.css')
+    link(rel="stylesheet", href="/adminlte/bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css")
+    link(rel='stylesheet', href='/adminlte/bower_components/select2/dist/css/select2.min.css')
+
+block footer
+    script(src='/adminlte/bower_components/select2/dist/js/select2.full.min.js')
+    script(src="/adminlte/bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js")
+    script(type='text/javascript', src='/plugins/datatables/datatables.min.js')
+    script(src='/adminlte/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js')
+    script(src="/js/modules/export/summary.js")
+    
+block content
+    .col-xs-12
+        .box
+            .box-header
+                h3.box-title
+                    b #{title}
+            .box-body
+                form#fmain.form-horizontal
+                    .row 
+                        .col-md-12
+                            .form-group
+                                label.col-sm-2.control-label(for='date_start') Date Start
+                                .col-sm-4
+                                    input#date_start.form-control.datepicker(name='date_start',type='text', placeholder='Date Start')   
+                                    
+                                label.col-sm-2.control-label(for='date_end') Date End
+                                .col-sm-4
+                                    input#date_end.form-control.datepicker(name='date_end',type='text', placeholder='Date End')   
+                            
+                            .form-group
+                                label.col-sm-2.control-label(for='district') District
+                                .col-sm-4
+                                    select#district.form-control.select2(name='district')
+                                        option(value="") ALL
+                                        option(value="Indonesia Barat") Indonesia Barat
+                                        option(value="Indonesia Timur") Indonesia Timur
+                                        option(value="Jabodetabek") Jabodetabek
+
+            .box-footer
+                a#btn_search.btn.btn-primary(href='javascript:;') Search
+
+        .box
+            .box-header
+                h3.box-title
+                    b ACTION
+                    
+                // /.box-header
+                
+            .box-body
+                table#dt_table.table.table-bordered.table-hover
+                    thead
+                    tbody
+
+        .box
+            .box-header
+                h3.box-title
+                    b TICKET
+                    
+                // /.box-header
+                
+            .box-body
+                table#dt_table1.table.table-bordered.table-hover
+                    thead
+                    tbody
+
+        .box
+            .box-header
+                h3.box-title
+                    b Supervisor
+                    
+                // /.box-header
+                
+            .box-body
+                table#dt_table2.table.table-bordered.table-hover
+                    thead
+                    tbody
+
+        .box
+            .box-header
+                h3.box-title
+                    b Partner
+                    
+                // /.box-header
+                
+            .box-body
+                table#dt_table3.table.table-bordered.table-hover
+                    thead
+                    tbody
+                    

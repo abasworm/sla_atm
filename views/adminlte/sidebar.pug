@@ -1,0 +1,47 @@
+// sidebar: style can be found in sidebar.less
+section.sidebar
+    // Sidebar user panel
+    .user-panel
+        .pull-left.image
+            //img.img-circle(src='' alt='User Image')
+            h3
+                span.label.bg-blue
+                    i.fa.fa-user
+        .pull-left.info
+            p #{_UserName}
+            a(href='#')
+                i.fa.fa-circle.text-success
+                |  Online
+   
+    
+    // sidebar menu: : style can be found in sidebar.less
+    ul.sidebar-menu(data-widget='tree')
+        li.header MAIN NAVIGATION #{_UserGroup}
+        li
+            a(href='/dashboard')
+                i.fa.fa-dashboard
+                span Dashboard
+        - if ([1].includes(_UserGroup))
+            li.treeview
+                a(href='#')
+                    i.fa.fa-book
+                    span Management Master
+                    span.pull-right-container
+                        i.fa.fa-angle-left.pull-right
+                ul.treeview-menu
+                    li
+                        a(href='/users')
+                            i.fa.fa-users(aria-hidden='true')
+                            span User
+                    li
+                        a(href='/dm_atm')
+                            i.fa.fa-building(aria-hidden='true')
+                            span ATM
+        - if ([1,2].includes(_UserGroup))
+            li
+                a(href='/dm_main')
+                    i.fa.fa-ticket(aria-hidden='true')
+                    span INPUT TICKET
+       
+        
+// /.sidebar

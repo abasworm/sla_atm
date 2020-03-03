@@ -1,0 +1,44 @@
+extends ../adminlte/layout
+
+block content
+    .col-md-12
+        .box.box-info
+            .box-header.with-border
+                h3.box-title #{title}
+            // /.box-header
+            // form start
+            form.form-horizontal
+                .box-body
+                    .row
+                        if !isAddForm
+			                input(type='hidden', name='ids', value=ids)
+                        .col-md-12
+                        
+                            .form-group
+                                label.col-sm-2.control-label(for='username') Username
+                                .col-sm-8
+                                    input#username.form-control(type='text', placeholder='username')
+                            .form-group
+                                label.col-sm-2.control-label(for='password') Password
+                                .col-sm-8
+                                    input#password.form-control(type='password', placeholder='Password')
+                            .form-group
+                                label.col-sm-2.control-label(for='confpassword') Confirm Password
+                                .col-sm-8
+                                    input#confpassword.form-control(type='password', placeholder='Confirm Password')
+                            .form-group
+                                label.col-sm-2.control-label(for='firstname') First Name
+                                .col-sm-8
+                                    input#firstname.form-control(type='text', placeholder='Firstname')
+                            .form-group
+                                label.col-sm-2.control-label(for='lastname') Last Name
+                                .col-sm-8
+                                    input#lastname.form-control(type='text', placeholder='Lastname')
+                            .form-group
+                                .col-sm-2
+                                .col-sm-10
+                                    button.btn.btn-info(type='submit') Sign in
+                // /.box-body
+                .box-footer
+    script('/js/modules/users/form.js');
+                   

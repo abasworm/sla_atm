@@ -1,0 +1,78 @@
+extends ../adminlte/layout
+
+block header
+    link(rel='stylesheet', href='/plugins/datatables/datatables.min.css')
+    //bootstrap datepicker
+    link(rel="stylesheet" href="/adminlte/bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css")
+
+block footer
+    script(type='text/javascript', src='/plugins/datatables/datatables.min.js')
+    script(src='/adminlte/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js')
+    script(src="/adminlte/bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js")
+    script(src='/js/modules/at_ticket/form.js')
+    
+
+block content
+    .col-md-12
+        .box.box-info
+            .box-header.with-border
+                h3.box-title #{title}
+            // /.box-header
+            // form start
+            form.form-horizontal
+                .box-body
+                    #alertbox.alert.alert-warning
+                        a#closeAlert.close.btn.btn-sm(href='javascript:;')
+                            i.fa.fa-times
+                        text#message
+                    .row
+                        if !isAddForm
+                            input(type='hidden', name='ids', value=ids)
+                        
+                        .col-md-12
+                            .form-group
+                                label.col-sm-2.control-label(for='ticket') Ticket
+                                .col-sm-8
+                                    input#service_code.form-control(type='text', placeholder='Ticket')
+                            .form-group
+                                label.col-sm-2.control-label(for='atm_serial_number') Serial Number
+                                .col-sm-8
+                                    textarea#atm_serial_number.form-control(type='text', rows=15, placeholder='SERIAL NUMBER')
+                            
+                            .form-group
+                                .col-sm-2
+                                .col-sm-10
+                                    if isAddForm
+                                        a.btn.btn-primary(href='javascript:search();') Search
+                                    else
+                                        a.btn.btn-primary(href='javascript:update();') Update
+                                    | 
+                                    a.btn.btn-warning(href='/users') reset
+                // /.box-body
+                .box-footer
+    .col-xs-12
+        .box
+            .box-header
+                h3.box-title
+                    b #{title} 
+                    
+                // /.box-header
+                
+            .box-body
+                table#dt_table.table.table-bordered.table-hover
+                    thead
+                        tr
+                            each head in header_table
+                                th=head
+                            else 
+                                th There is no header
+                    tbody
+                    tfoot
+                        tr
+                            each head in header_table
+                                th=head
+                            else 
+                                th There is no header
+
+
+                   

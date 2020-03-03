@@ -1,0 +1,40 @@
+header.main-header
+    // Logo
+    a.logo(href='/')
+        // mini logo for sidebar mini 50x50 pixels
+        span.logo-mini
+            b #{_AppTitleAlias}
+        // logo for regular state and mobile devices
+        span.logo-lg
+            b #{_AppTitleSmall}
+    // Header Navbar: style can be found in header.less
+    nav.navbar.navbar-static-top
+        // Sidebar toggle button
+        a.sidebar-toggle(href='#' data-toggle='push-menu' role='button')
+            span.sr-only Toggle navigation
+            span.icon-bar
+            span.icon-bar
+            span.icon-bar
+        .navbar-custom-menu
+            ul.nav.navbar-nav
+                
+                
+                li.dropdown.user.user-menu
+                    a.dropdown-toggle(href='#' data-toggle='dropdown')
+                        span.label.bg-blue
+                            i.fa.fa-user
+                        span.hidden-xs #{_UserName}
+                    ul.dropdown-menu
+                        // User image
+                        li.user-body
+                            
+                            p
+                                small Member since Nov. 2012
+                        // Menu Body
+                        
+                                
+                        // Menu Footer
+                        li.user-footer
+                            .pull-right
+                                a.btn.btn-default.btn-flat(href='/login/exit') Sign out
+                

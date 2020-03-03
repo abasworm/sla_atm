@@ -1,0 +1,79 @@
+extends ../adminlte/layout
+
+block header
+    link(rel='stylesheet', href='/plugins/datatables/datatables.min.css')
+    link(rel="stylesheet", href="/adminlte/bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css")
+    link(rel='stylesheet', href='/adminlte/bower_components/select2/dist/css/select2.min.css')
+
+block footer
+    script(src='/adminlte/bower_components/select2/dist/js/select2.full.min.js')
+    script(src="/adminlte/bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js")
+    script(type='text/javascript', src='/plugins/datatables/datatables.min.js')
+    script(src='/adminlte/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js')
+    script(src="/js/modules/export/table.js")
+    
+block content
+    .col-xs-12
+        .box
+            .box-header
+                h3.box-title
+                    b #{title}
+            .box-body
+                form.form-horizontal
+                .row 
+                    .col-md-12
+                        .form-group
+                            label.col-sm-2.control-label(for='date_start') Date Start
+                            .col-sm-4
+                                input#date_start.form-control.datepicker(name='date_end',type='text', placeholder='Date Start')   
+                                
+                            label.col-sm-2.control-label(for='date_end') Date End
+                            .col-sm-4
+                                input#date_end.form-control.datepicker(name='date_end',type='text', placeholder='Date End')   
+                        .form-group
+                            label.col-sm-2.control-label(for='status_part') Status Part
+                            .col-sm-4
+                                select#status_part.form-control.select2(name='status_part')
+                                    option(value="") ALL
+                            
+                            label.col-sm-2.control-label(for='status_action') Action For
+                            .col-sm-4
+                                select#status_action.form-control.select2(name='status_action')
+                                    option(value="") ALL
+                        .form-group
+                            label.col-sm-2.control-label(for='status_ticket') Status Ticket
+                            .col-sm-4
+                                select#status_ticket.form-control.select2(name='status_ticket')
+                                    option(value="") ALL
+                            label.col-sm-2.control-label(for='spv') Supervisor
+                            .col-sm-4
+                                select#spv.form-control.select2(name='spv')
+                                    option(value="") ALL
+            .box-footer
+                a#btn_search.btn.btn-primary(href='javascript:;') Search
+
+        .box
+            .box-header
+                h3.box-title
+                    b #{title} 
+                    
+                // /.box-header
+                
+            .box-body
+                table#dt_table.table.table-bordered.table-hover
+                    thead
+                        tr
+                            each val,index in tbls
+                                th=val
+                            else 
+                                th There is no header
+                    tbody
+                    tfoot
+                        tr
+                            each val,index in tbls
+                                th=val
+                            else 
+                                th There is no header
+
+        script. 
+            var _head = !{JSON.stringify(tbls)};

@@ -1,0 +1,86 @@
+extends ../adminlte/layout
+
+block header
+    link(rel="stylesheet", href="/adminlte/bower_components/Ionicons/css/ionicons.min.css")
+    link(rel="stylesheet", href="/plugins/c3/c3.min.css")
+
+block footer
+    script(type='text/javascript', src='/plugins/c3/c3.min.js')
+    script(type='text/javascript', src='/plugins/c3/d3.v5.min.js')
+    script(type='text/javascript', src='/js/modules/dashboard/chart.js')
+
+block content
+    .col-md-6.col-sm-6.col-xs-12
+        .info-box
+            span.info-box-icon.bg-aqua
+                i.ion.ion-ios-gear-outline
+            .info-box-content
+                span.info-box-text Today's Open Ticket
+                span.info-box-number
+                    span#openToday 0
+                    small &nbsp;Ticket
+    .col-md-6.col-sm-6.col-xs-12
+        .info-box
+            span.info-box-icon.bg-blue
+                i.ion.ion-flash
+            .info-box-content
+                span.info-box-text All Open Ticket
+                span.info-box-number
+                    span#openAll 0
+                    small &nbsp;Ticket
+    
+    .col-md-12.col-sm-12.col-xs-12
+        .box
+            .box-header.with-border
+                h3.box-title Customer
+            .box-body
+                #chartCustomer
+                #customer-body
+    .col-md-6.col-sm-6.col-xs-12
+        .box
+            .box-header.with-border
+                h3.box-title Status Action
+            .box-body#action-body
+                #chartStatusAction
+                table#tb_action.table.table-border.table-hover
+                    thead
+                        tr
+                            th Field
+                            th Value
+                    tbody
+
+    .col-md-6.col-sm-6.col-xs-12
+        .box
+            .box-header.with-border
+                h3.box-title Status Ticket
+            .box-body
+                #chartStatus
+                table#tb_status.table.table-border.table-hover
+                    thead
+                        tr
+                            th Field
+                            th Value
+                    tbody
+    .col-md-6.col-sm-6.col-xs-12
+        .box
+            .box-header.with-border
+                h3.box-title Range Days Open Ticket
+            .box-body
+                #chartRange
+                table#tb_range.table.table-border.table-hover
+                    thead
+                        tr
+                            th Field
+                            th Value
+                    tbody
+    .col-md-12.col-sm-12.col-xs-12
+        .box
+            .box-header.with-border
+                h3.box-title Status Summary (TEST ONLY)
+            .box-body
+                #chartStatusSummary
+
+
+        
+    
+    

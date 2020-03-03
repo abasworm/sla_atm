@@ -1,0 +1,41 @@
+extends ../adminlte/layout
+
+block header
+    link(rel='stylesheet', href='/plugins/datatables/datatables.min.css')
+
+block footer
+    script(type='text/javascript', src='/plugins/datatables/datatables.min.js')
+    script(src='/adminlte/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js')
+    script(src="/js/modules/users/table.js")
+    
+block content
+    .col-xs-12
+        .box
+            .box-header
+                h3.box-title
+                    b #{title} 
+                    
+                // /.box-header
+                a.btn.btn-primary.pull-right(href='/users/add') 
+                    i.fa.fa-plus(aria-hidden='true') &nbsp;
+                    | Add
+            .box-body
+                #alertbox.alert.alert-warning
+                    a#closeAlert.close.btn.btn-sm(href='javascript:;')
+                        i.fa.fa-times
+                    text#message
+                table#dt_table.table.table-bordered.table-hover
+                    thead
+                        tr
+                            each head in header
+                                th=head
+                            else 
+                                th There is no header
+                    tbody
+                    tfoot
+                        tr
+                            each head in header
+                                th=head
+                            else 
+                                th There is no header
+

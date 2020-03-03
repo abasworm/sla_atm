@@ -1,0 +1,42 @@
+extends ../adminlte/layout
+
+block header
+    link(rel='stylesheet', href='/plugins/datatables/datatables.min.css')
+    link(rel="stylesheet", href="/adminlte/bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css")
+    link(rel='stylesheet', href='/adminlte/bower_components/select2/dist/css/select2.min.css')
+
+block footer
+    script(src='/adminlte/bower_components/select2/dist/js/select2.full.min.js')
+    script(src="/adminlte/bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js")
+    script(type='text/javascript', src='/plugins/datatables/datatables.min.js')
+    script(src='/adminlte/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js')
+    script(src="/js/modules/export/table_sum.js")
+    
+block content
+    .col-xs-12
+        .box
+            .box-header
+                h3.box-title
+                    b #{title} 
+                    
+                // /.box-header
+                
+            .box-body
+                table#dt_table.table.table-bordered.table-hover
+                    thead
+                        tr
+                            each val,index in tbls
+                                th=val
+                            else 
+                                th There is no header
+                    tbody
+                        !{resx}
+                    tfoot
+                        tr
+                            each val,index in tbls
+                                th=val
+                            else 
+                                th There is no header
+
+        script. 
+            var _head = !{JSON.stringify(tbls)};

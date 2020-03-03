@@ -1,0 +1,72 @@
+extends ../adminlte/layout
+
+block header
+    link(rel='stylesheet', href='/plugins/datatables/datatables.min.css')
+
+block footer
+    script(type='text/javascript', src='/plugins/datatables/datatables.min.js')
+    script(src='/adminlte/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js')
+    script(src='/js/modules/import/form.js')  
+
+block content
+    .col-md-12
+        .box.box-info
+            .box-header.with-border
+                h3.box-title #{title}
+            // /.box-header
+            // form start
+            form#fmain.form-horizontal
+                input#uid(type='hidden', name='uid',value='#{uid}')
+                .box-body
+                    #alertbox.alert.alert-warning
+                        a#closeAlert.close.btn.btn-sm(href='javascript:;')
+                            i.fa.fa-times
+                        text#message
+                    .row
+                        if !isAddForm
+                            input(type='hidden', name='ids', value=ids)
+                        
+                        .col-md-12
+                            .form-group
+                                label.col-sm-2.control-label(for='FileID') FILE
+                                .col-sm-4
+                                    input#FileID.form-control(name="FileID",type='file', accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel")
+                                    span.help-block 
+                                        small **Press [ENTER] to Next Steps
+                            .form-group
+                                .col-sm-2
+                                .col-sm-10
+                                    a#btn_save.btn.btn-primary Upload
+                                    |  
+                                    a#btn_transfer.btn.btn-primary.disabled Transfer
+                                    |  
+                                    a#btn_clear.btn.btn-primary Clear Data
+                                    |  
+                                    a#btn_refresh.btn.btn-primary Refresh
+                                    |  
+                                    a#btn_cancel.btn.btn-warning Cancel
+                .box
+                    .box-header
+                        h3.box-title
+                            b #{title} 
+                            
+                        // /.box-header
+                        
+                    .box-body
+                        table#dt_table.table.table-bordered.table-hover
+                            thead
+                                tr
+                                    each head,index in tableat
+                                        th=head
+                                    else 
+                                        th There is no header
+                            tbody
+                            tfoot
+                                tr
+                                    each head,index in tableat
+                                        th=head
+                                    else 
+                                        th There is no header
+
+        script. 
+            var _head = !{JSON.stringify(tableat)};
